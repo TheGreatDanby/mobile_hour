@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head.ejs") %>
+    <title>The Mobile Hour - Staff Admin</title>
+  </head>
+  <body>
+    <main>
+      <%- include("partials/header.ejs") %> <%-
+      include("partials/admin_nav.ejs", {access_role: access_role}) %>
+      <section class="half-half-layout">
+        <section class="cols-4 data-list">
+          <span class="data-list-heading">Name</span>
+          <span class="data-list-heading">Username</span>
+          <span class="data-list-heading">Role</span>
+          <span></span>
+          <% for (let staff of staffs) { %>
+          <span><%= staff.user_first_name %> <%= staff.user_last_name %></span>
+          <span><%= staff.user_username %></span>
+          <span><%= staff.user_role %></span>
+          <a
+            href="/staff_admin?edit_id=<%= staff.user_id %>"
+            class="btn btn-primary"
+            >Edit</a
+          >
+          <% } %>
+        </section>
+        <form action="/edit_staff" method="post" class="form-grid">
+          <input
+            type="hidden"
+            name="staff_id"
+            value="<%= edit_staff.staff_id %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="first-name">First Name:</label>
+          <input
+            type="text"
+            name="first_name"
+            id="first-name"
+            value="<%= edit_staff.user_first_name %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="last-name">Last Name:</label>
+          <input
+            type="text"
+            name="last_name"
+            id="last-name"
+            value="<%= edit_staff.user_last_name %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="access-role">Access Role</label>
+          <select
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+            name="access_role"
+            id="access-role"
+          >
+            <option value="manager">Manager</option>
+            <option value="stock">Stock</option>
+            <option value="sales">Sales</option>
+            <option value="customer">Customer</option>
+          </select>
+          <script>
+            // This is a hack to set the selected option of the select box above
+            document.getElementById("access-role").value =
+              "<%= edit_staff.user_role %>";
+          </script>
+          <label for="username">Username:</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            value="<%= edit_staff.user_username %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            value="<%= edit_staff.user_password %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <input
+            type="submit"
+            name="action"
+            value="delete"
+            class="btn btn-error"
+          />
+          <% if (edit_staff.staff_id == "0") { %>
+          <input
+            type="submit"
+            name="action"
+            value="create"
+            class="btn btn-primary"
+          />
+          <% } else { %>
+          <input
+            type="submit"
+            name="action"
+            value="update"
+            class="btn btn-primary"
+          />
+          <% } %>
+        </form>
+      </section>
+      <%- include("partials/footer.ejs") %>
+    </main>
+  </body>
+</html>

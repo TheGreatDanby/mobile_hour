@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head.ejs") %>
+    <title>The Mobile Hour - Order Admin</title>
+  </head>
+  <body>
+    <main>
+      <%- include("partials/header.ejs") %> <%-
+      include("partials/admin_nav.ejs", {access_role: access_role}) %>
+      <section class="">
+        <nav>
+          <a href="/order_admin?status=pending">Pending Orders</a>
+          <a href="/order_admin?status=complete">Complete Orders</a>
+          <a href="/order_admin?status=cancelled">Cancelled Orders</a>
+        </nav>
+        <section class="cols-3 data-list">
+          <span class="data-list-heading">Order Time</span>
+          <span class="data-list-heading">Product / Customer</span>
+
+          <span class="status_hidden data-list-heading">Status</span>
+          <% for (let order of orders) { %>
+          <span><%= order.order_date.toLocaleString() %></span>
+          <div>
+            <span
+              >Order # <%= order.order_id %> for <%= order.product_name %></span
+            ><br />
+            <span><b>Customer Details</b></span
+            ><br />
+            <span><%= order.order_customer_first_name %></span>
+            <span><%= order.order_customer_last_name %></span><br />
+            <span><%= order.order_customer_address %></span><br />
+            <span><%= order.order_customer_email %></span><br />
+            <span><%= order.order_customer_phone %></span>
+          </div>
+
+          <form
+            action="/order_admin"
+            method="post"
+            class="status order-update-form"
+          >
+            <input
+              type="hidden"
+              name="order_id"
+              value="<%= order.order_id %>"
+              class="select select-primary w-full max-w-xs"
+            />
+            <p id="status_hidden">Status</p>
+            <select class="rounded-full" name="status">
+              <option value="" disabled selected>Select</option>
+              <option value="pending">Pending</option>
+              <option value="complete">Complete</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+            <input class="btn btn-primary" type="submit" value="Update" />
+          </form>
+          <% } %>
+        </section>
+      </section>
+      <%- include("partials/footer.ejs") %>
+    </main>
+  </body>
+</html>

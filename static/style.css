@@ -1,0 +1,283 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+  margin: 0 auto;
+  width: 80%;
+  max-width: 1000px;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  padding-bottom: 10px;
+  border-bottom: black 2px solid;
+}
+
+header a {
+  color: black;
+  text-decoration: none;
+}
+
+header h1 {
+  font-size: 40px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 20px;
+  margin: 10px 0;
+  padding-bottom: 10px;
+  border-bottom: black 2px solid;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 20px;
+  margin: 10px 0;
+  padding-top: 10px;
+  border-top: black 2px solid;
+}
+
+input,
+select {
+  border: 1px solid black;
+  padding: 5px;
+  font-size: 20px;
+}
+
+textarea {
+  border: 1px solid black;
+  padding: 5px;
+  font-size: 20px;
+  height: 6em;
+  resize: none;
+}
+
+.search-form {
+  width: 100%;
+  /* max-width: 700px; */
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  justify-items: end;
+}
+
+.search-form * {
+  width: 100%;
+  max-width: 200px;
+}
+
+.phone-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.phone-card {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  /* grid-column: 3/4; */
+  justify-items: end;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 5px 0px 3px 0px rgba(20, 20, 20, 0.4);
+  padding: 10px;
+}
+
+.info {
+  text-align: end;
+}
+.phone-card img {
+  justify-self: center;
+  /* align-self: center; */
+  width: 25vh;
+  border-radius: 10px;
+  grid-row: 1 / 3;
+}
+img {
+  width: 25vh;
+}
+.product {
+  grid-column-start: 2;
+}
+.phone-card p {
+  overflow: hidden;
+  max-height: 10em;
+}
+
+.link-button,
+.phone-card a {
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  border: #25a35a 3px solid;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 20px;
+  align-self: center;
+  border-radius: 10px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+.phone-card .button {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  justify-content: space-evenly;
+  background: #2ecc71;
+  color: #fff;
+  grid-row: 2;
+  grid-column: 2/4;
+  justify-self: center;
+}
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+.form-grid {
+  align-self: start;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  gap: 20px;
+}
+
+#status_hidden {
+  display: none;
+}
+
+.responsive-half {
+  width: 50%;
+  max-width: 700px;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.half-half-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.data-list {
+  display: grid;
+  align-items: start;
+  gap: 20px;
+}
+
+.cols-3 {
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.cols-4 {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.cols-5 {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.data-list-heading {
+  font-weight: bold;
+}
+
+.order-update-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+
+label {
+  text-align: end;
+  font-weight: 900;
+}
+
+@media screen and (max-width: 700px) {
+  main {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .staff {
+    display: none;
+  }
+  .cols-5 {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .cols-3 {
+    grid-template-columns: 1fr 2fr;
+  }
+  .cols-3a {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .status {
+    grid-column: span 2;
+  }
+  .status_hidden {
+    display: none;
+  }
+
+  .phone-list {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .responsive-half {
+    width: 100%;
+  }
+
+  .half-half-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .order-update-form {
+    grid-template-columns: 1fr;
+  }
+}

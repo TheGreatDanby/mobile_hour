@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head.ejs") %>
+    <title>The Mobile Hour - Product Admin</title>
+  </head>
+  <body>
+    <main>
+      <%- include("partials/header.ejs") %> <%-
+      include("partials/admin_nav.ejs", {access_role: access_role}) %>
+      <section class="half-half-layout">
+        <section class="cols-5 data-list">
+          <span class="data-list-heading">Name</span>
+          <span class="data-list-heading">Stock</span>
+          <span class="data-list-heading">Price</span>
+          <span class="staff data-list-heading">Updated By</span>
+          <span></span>
+          <% for (let product of products) { %>
+          <span><%= product.product_name %></span>
+          <span><%= product.product_stock %></span>
+          <span><%= product.product_price %></span>
+          <span class="staff"><%= product.user_first_name %></span>
+          <a
+            href="/product_admin?edit_id=<%= product.product_id %>"
+            class="btn btn-secondary"
+            >Edit</a
+          >
+          <% } %>
+        </section>
+        <form action="/edit_product" method="post" class="form-grid">
+          <h3>Device Details</h3>
+          <span></span>
+          <input
+            type="hidden"
+            name="product_id"
+            value="<%= edit_product.product_id %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value="<%= edit_product.product_name %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="model">Model:</label>
+          <input
+            type="text"
+            name="model"
+            id="model"
+            value="<%= edit_product.product_model %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="manufacturer">Manufacturer:</label>
+          <input
+            type="text"
+            name="manufacturer"
+            id="manufacturer"
+            value="<%= edit_product.product_manufacturer %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="stock">Stock:</label>
+          <input
+            type="text"
+            name="stock"
+            id="stock"
+            value="<%= edit_product.product_stock %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="price">Price:</label>
+          <input
+            type="text"
+            name="price"
+            id="price"
+            value="<%= edit_product.product_price %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="description">Description:</label>
+          <textarea
+            name="description"
+            id="description"
+            class="textarea input-bordered textarea-primary w-full max-w-xs bg-white"
+          >
+<%= validator.unescape(edit_product.product_description ?? "")%></textarea
+          >
+
+          <h3>Feature List</h3>
+          <span></span>
+          <input
+            type="hidden"
+            name="feature_id"
+            value="<%= edit_product.feature_id %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="feature_weight_g">Weight in gram:</label>
+          <input
+            type="number"
+            name="feature_weight_g"
+            id="feature_weight_g"
+            value="<%= edit_product.feature_weight_g %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+
+          <label for="feature_height_mm">Height in mm:</label>
+          <input
+            type="number"
+            name="feature_height_mm"
+            id="feature_height_mm"
+            value="<%= edit_product.feature_height_mm %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+
+          <label for="feature_width_mm">Width in mm:</label>
+          <input
+            type="number"
+            name="feature_width_mm"
+            id="feature_width_mm"
+            value="<%= edit_product.feature_width_mm %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="feature_depth_mm">Depth in mm:</label>
+          <input
+            type="number"
+            name="feature_depth_mm"
+            id="feature_depth_mm"
+            value="<%= edit_product.feature_depth_mm %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="feature_operating_system">Operating System:</label>
+          <input
+            type="text"
+            name="feature_operating_system"
+            id="feature_operating_system"
+            value="<%= edit_product.feature_operating_system %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="feature_screen_size">Screen size:</label>
+          <input type="text" name="feature_screen_size" id="feature_screen_size"
+          value="<%= validator.unescape(edit_product.feature_screen_size ?? "")
+          %>" class="input input-bordered input-primary w-full max-w-xs
+          bg-white" />
+          <label for="feature_screen_resolution">Resolution:</label>
+          <input
+            type="text"
+            name="feature_screen_resolution"
+            id="feature_screen_resolution"
+            value="<%= edit_product.feature_screen_resolution %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="feature_cpu">CPU:</label>
+          <input type="text" name="feature_cpu" id="feature_cpu" value="<%=
+          validator.unescape(edit_product.feature_cpu ?? "")%>" class="input
+          input-bordered input-primary w-full max-w-xs bg-white" />
+          <label for="feature_ram">RAM:</label>
+          <input
+            type="text"
+            name="feature_ram"
+            id="feature_ram"
+            value="<%= edit_product.feature_ram %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="feature_storage">Storage in GB:</label>
+          <input
+            type="text"
+            name="feature_storage"
+            id="feature_storage"
+            value="<%= edit_product.feature_storage %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="feature_battery">Battery Capacity:</label>
+          <input
+            type="text"
+            name="feature_battery"
+            id="feature_battery"
+            value="<%= edit_product.feature_battery %>"
+            class="input input-bordered input-primary w-full max-w-xs bg-white"
+          />
+          <label for="feature_rear_camera">Main Camera:</label>
+          <input type="text" name="feature_rear_camera" id="feature_rear_camera"
+          value="<%= validator.unescape(edit_product.feature_rear_camera ?? "")
+          %>" class="input input-bordered input-primary w-full max-w-xs
+          bg-white" />
+          <label for="feature_front_camera">Front Camera:</label>
+          <input type="text" name="feature_front_camera"
+          id="feature_front_camera" value="<%=
+          validator.unescape(edit_product.feature_front_camera ?? "")%>"
+          class="input input-bordered input-primary w-full max-w-xs bg-white" />
+          <input
+            type="submit"
+            name="action"
+            value="delete"
+            class="btn btn-error"
+          />
+          <% if (edit_product.product_id == "0") { %>
+          <input
+            type="submit"
+            name="action"
+            value="create"
+            class="btn btn-primary"
+          />
+          <% } else { %>
+          <input
+            type="submit"
+            name="action"
+            value="update"
+            class="btn btn-primary"
+          />
+          <% } %>
+        </form>
+      </section>
+      <%- include("partials/footer.ejs") %>
+    </main>
+  </body>
+</html>
