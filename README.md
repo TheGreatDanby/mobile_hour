@@ -28,15 +28,21 @@ As part of a web development course, this project involves creating a new, respo
 - **Admin and User Management**: Simulates admin functionalities for educational purposes.
 - **Product Management**: Demonstrates how products can be added, updated, and deleted within an admin interface.
 
-## Setup for Demonstration
+## Technologies
 
-To set up this project for demonstration purposes, follow these steps:
+- **Node.js**: The core environment for running the server-side code.
+- **Express**: A web application framework for Node.js, used for server-side routing and middleware logic.
+- **MySQL2**: A MySQL client for Node.js, which provides asynchronous interface for MySQL database operations.
+- **Bcryptjs**: A library to help hash passwords, enhancing security by encrypting user password data.
+- **EJS**: A templating language to generate HTML markup with plain JavaScript, used for rendering views.
+- **Express-session**: Middleware for handling sessions, which is essential for user authentication and management.
+- **Validator**: A library of string validators and sanitisers, ensuring data integrity and security.
+- **DaisyUI**: A Tailwind CSS component library to style the application efficiently.
+- **Theme-change**: A library to enable dynamic theme changes in the application.
+- **TailwindCSS** (Dev Dependency): A utility-first CSS framework used for designing custom user interfaces directly in your markup.
 
-1. Clone the repo
+This configuration demonstrates a full-stack JavaScript approach, leveraging Node.js for the backend and integrating various libraries and frameworks to create a secure and dynamic web application for The Mobile Hour.
 
-2. Navigate to the project directory
-
-3. (Include any additional steps specific to setting up the demonstration environment.)
 
 ## Contributing
 
