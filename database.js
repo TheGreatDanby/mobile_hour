@@ -1,8 +1,8 @@
 import mysql from "mysql2/promise"
 
 export const db_conn = mysql.createPool({
-    host: "localhost",
-    user: "mobile_root",
-    password: "waterfall@sun",
-    database: "mobile_hour"
+    host: "127.0.0.1",
+    user: "mobile-db-admin",
+    password: "Pp687jgBTCooeDa9JP7c",
+    database: "mobile"
 });
